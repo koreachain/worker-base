@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if ! [[ "${1:-}" =~ ^(-u|--unchecked)$ ]]; then
+    echo -e "Linter› *** bunx tsc --noEmit ***\n" >&2
+    bunx tsc --noEmit || status0="$?"
+
+    echo -e "\nLinter› *** bunx eslint ***" >&2
+    bunx eslint || status1="$?"
+
+    if [[ "${status0:-}" != 0 || "${status1:-}" != 0 ]]; then
+        exit 1
+    fi
+fi
+
+rm -rf ./dist
+
+bun build ./src/index.ts \
+    --target browser --production --sourcemap --outdir ./dist \
+    --drop console.debug --drop debugger

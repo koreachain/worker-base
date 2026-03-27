@@ -1,0 +1,23 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+     "$schema": "node_modules/wrangler/config-schema.json",
+     "name": "worker-static-assets",
+     "compatibility_date": "2026-02-03", // set to your deployment date
+     "observability": {
+          "enabled": true,
+          "head_sampling_rate": 1 // percentage of requests that get logged
+     },
+     "send_metrics": false,
+     "workers_dev": false,
+     "preview_urls": false,
+     /**
+     * Static Assets
+     * https://developers.cloudflare.com/workers/static-assets/binding/
+     */
+     "assets": {
+          "directory": "./static",
+     }
+}

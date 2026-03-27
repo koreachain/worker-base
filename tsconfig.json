@@ -1,15 +1,35 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "lib": ["esnext"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": ["@cloudflare/workers-types", "./worker-configuration.d.ts"],
-    "noEmit": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "strict": true
-  },
-  "include": ["src"]
+    "compilerOptions": {
+        "lib": [
+            "ESNext"
+        ],
+        "target": "ESNext",
+        "module": "Preserve",
+        "moduleDetection": "force",
+        "allowJs": true,
+        "checkJs": true,
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "verbatimModuleSyntax": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noImplicitAny": false,
+        "types": [
+            "@cloudflare/workers-types"
+        ],
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.js",
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "samples",
+        "static"
+    ],
 }
