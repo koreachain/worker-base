@@ -1,12 +1,12 @@
 {
     "type": "module",
     "scripts": {
-        "deploy": "wrangler deploy",
-        "dev": "wrangler dev",
-        "start": "wrangler dev",
+        "deploy": "bunx wrangler deploy",
+        "dev": "bunx wrangler dev",
+        "start": "bunx wrangler dev",
         "test": "vitest",
-        "cf-typegen": "wrangler types",
-        "staging": "wrangler versions upload --preview-alias dev"
+        "cf-typegen": "bunx wrangler types",
+        "staging": "bunx wrangler versions upload --preview-alias dev"
     },
     "dependencies": {},
     "devDependencies": {

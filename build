@@ -2,14 +2,15 @@
 
 set -eu
 
-if ! [[ "${1:-}" =~ ^(-u|--unchecked)$ ]]; then
-    echo -e "Linter› *** bunx tsc --noEmit ***\n" >&2
-    bunx tsc --noEmit || status0="$?"
+if [[ " $* " != *" -u "* && " $* " != *" --unchecked "* ]]; then
+    echo -e "Linter› *** tsc ***\n" >&2
+    bunx tsc --noEmit --project tsconfig.build.json || error0="$?"
 
-    echo -e "\nLinter› *** bunx eslint ***" >&2
-    bunx eslint || status1="$?"
+    echo -e "\nLinter› *** eslint ***" >&2
+    bunx eslint || error1="$?"
 
-    if [[ "${status0:-}" != 0 || "${status1:-}" != 0 ]]; then
+    if [[ "${error0:-}" || "${error1:-}" ]]; then
+        echo -e "\nLinter› \033[31m*** Errors found! ***\033[0m" >&2
         exit 1
     fi
 fi
